@@ -34,9 +34,9 @@ $todos = $statement->fetchAll();
                     <td><?php echo $todo->description; ?></td>
 
                     <td>
-                        <a href="edit.php?id=<?php echo $todo->id ?>" class="btn btn-success btn-sm">Edit</a>
+                        <a href="edit.php?id=<?php echo $todo->id ?>" class="btn btn-info btn-sm text-white">Edit</a>
 
-                        <a href="delete.php?id=<?php echo $todo->id ?>" class="btn btn-danger btn-sm">Delete</a>
+                        <a href="delete.php?id=<?php echo $todo->id ?>" class="btn btn-danger btn-sm text-white">Delete</a>
                     </td>
                 </tr>
                 <?php endforeach; ?>
