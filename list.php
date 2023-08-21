@@ -1,0 +1,48 @@
+
+
+
+<?php
+
+    $db = new PDO('mysql:dbhost=localhost;dbname=haha_todo_db', 'root', '', [
+        PDO::ATTR_ERRMODE => PDO::ERRMODE_WARNING,
+        PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_OBJ,
+    ]);
+
+$statement = $db->query("select * from todos");
+
+$todos = $statement->fetchAll();
+?>
+
+
+<?php include('layout/header.php') ?>
+<div class="row mt-5">
+    <div class="col-md-12">
+        <table class="table table-bordered table-striped">
+            <thead>
+                <tr>
+                    <th width="20%">Title</th>
+                    <th>Description</th>
+                    <th width="13%">Action</th>
+                </tr>
+            </thead>
+
+            <tbody>
+                <?php foreach($todos as $todo) : ?>
+                <tr>
+                    <td><?php echo $todo->title; ?></td>
+
+                    <td><?php echo $todo->description; ?></td>
+
+                    <td>
+                        <a href="edit.php?id=<?php echo $todo->id ?>" class="btn btn-success btn-sm">Edit</a>
+
+                        <a href="delete.php?id=<?php echo $todo->id ?>" class="btn btn-danger btn-sm">Delete</a>
+                    </td>
+                </tr>
+                <?php endforeach; ?>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<?php include('layout/footer.php') ?>
